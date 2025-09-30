@@ -1,14 +1,23 @@
 "use client";
 
+import { BookOpenCheck, LayoutDashboard, Users } from "lucide-react";
 import type { ComponentType } from "react";
 
 import { Link, usePathname } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 
+const iconMap = {
+  layoutDashboard: LayoutDashboard,
+  attendance: BookOpenCheck,
+  students: Users,
+} satisfies Record<string, ComponentType<{ className?: string }>>;
+
+export type NavIcon = keyof typeof iconMap;
+
 export interface NavItem {
   href: string;
   label: string;
-  icon: ComponentType<{ className?: string }>;
+  icon: NavIcon;
 }
 
 export function AppSidebarNav({ items }: { items: NavItem[] }) {
@@ -16,7 +25,8 @@ export function AppSidebarNav({ items }: { items: NavItem[] }) {
 
   return (
     <nav className="space-y-1">
-      {items.map(({ href, label, icon: Icon }) => {
+      {items.map(({ href, label, icon }) => {
+        const Icon = iconMap[icon] ?? LayoutDashboard;
         const isActive = pathname === href || pathname.startsWith(`${href}/`);
 
         return (

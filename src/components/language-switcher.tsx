@@ -1,7 +1,7 @@
 "use client";
 
-import { useTransition } from "react";
 import { useLocale, useTranslations } from "next-intl";
+import { useTransition } from "react";
 
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { locales } from "@/lib/i18n/config";

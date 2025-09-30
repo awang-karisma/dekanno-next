@@ -1,6 +1,6 @@
-import { Fragment } from "react";
-import { getTranslations } from "next-intl/server";
 import { ArrowUpRight, CalendarRange, Users } from "lucide-react";
+import { getTranslations } from "next-intl/server";
+import { Fragment } from "react";
 
 import { AttendanceTrendChart } from "@/components/charts/attendance-trend-chart";
 import { ClassAttendanceChart } from "@/components/charts/class-attendance-chart";

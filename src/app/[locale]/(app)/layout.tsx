@@ -1,7 +1,6 @@
-import type { ReactNode } from "react";
 import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
-import { BookOpenCheck, LayoutDashboard, Users } from "lucide-react";
+import type { ReactNode } from "react";
 
 import { AppSidebarNav, type NavItem } from "@/components/app-sidebar-nav";
 import { LanguageSwitcher } from "@/components/language-switcher";
@@ -16,32 +15,32 @@ export default async function AppLayout({
   params,
 }: {
   children: ReactNode;
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
-  const { locale } = params;
+  const { locale } = await params;
 
   if (!locales.includes(locale as (typeof locales)[number])) {
     notFound();
   }
 
-  const tNav = await getTranslations({ namespace: "nav" });
-  const tApp = await getTranslations({ namespace: "app" });
+  const tNav = await getTranslations({ namespace: "nav", locale });
+  const tApp = await getTranslations({ namespace: "app", locale });
 
   const navItems: NavItem[] = [
     {
       href: `/${locale}/dashboard`,
       label: tNav("dashboard"),
-      icon: LayoutDashboard,
+      icon: "layoutDashboard",
     },
     {
       href: `/${locale}/attendance`,
       label: tNav("attendance"),
-      icon: BookOpenCheck,
+      icon: "attendance",
     },
     {
       href: `/${locale}/students`,
       label: tNav("students"),
-      icon: Users,
+      icon: "students",
     },
   ];
 

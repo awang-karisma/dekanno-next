@@ -1,11 +1,19 @@
-import { getTranslations } from "next-intl/server";
 import { Users } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { StudentDirectory } from "@/components/students/student-directory";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-export default async function StudentsPage() {
-  const tStudents = await getTranslations({ namespace: "students" });
+export default async function StudentsPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const tStudents = await getTranslations({
+    namespace: "students",
+    locale,
+  });
 
   const highlights = [
     {

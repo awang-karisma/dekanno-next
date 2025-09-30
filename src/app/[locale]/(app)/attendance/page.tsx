@@ -2,8 +2,16 @@ import { getTranslations } from "next-intl/server";
 
 import { AttendanceManager } from "@/components/attendance/attendance-manager";
 
-export default async function AttendancePage() {
-  const tAttendance = await getTranslations({ namespace: "attendance" });
+export default async function AttendancePage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const tAttendance = await getTranslations({
+    namespace: "attendance",
+    locale,
+  });
 
   return (
     <div className="space-y-6">

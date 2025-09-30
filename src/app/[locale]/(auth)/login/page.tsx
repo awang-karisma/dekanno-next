@@ -18,12 +18,11 @@ import { Link } from "@/i18n/navigation";
 export default async function LoginPage({
   params,
 }: {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
-  const tAuth = await getTranslations({ namespace: "auth" });
-  const tCommon = await getTranslations({ namespace: "common" });
-
-  const locale = params.locale;
+  const { locale } = await params;
+  const tAuth = await getTranslations({ namespace: "auth", locale });
+  const tCommon = await getTranslations({ namespace: "common", locale });
 
   return (
     <div className="relative flex min-h-screen flex-col justify-center bg-background px-4 py-12">

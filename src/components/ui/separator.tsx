@@ -9,19 +9,23 @@ const Separator = React.forwardRef<
   (
     { className, orientation = "horizontal", decorative = true, ...props },
     ref,
-  ) => (
-    <div
-      ref={ref}
-      role={decorative ? "none" : "separator"}
-      aria-orientation={orientation}
-      className={cn(
-        "shrink-0 bg-border",
-        orientation === "horizontal" ? "h-px w-full" : "h-full w-px",
-        className,
-      )}
-      {...props}
-    />
-  ),
+  ) => {
+    const ariaProps = decorative ? {} : { "aria-orientation": orientation };
+
+    return (
+      <div
+        ref={ref}
+        role={decorative ? "none" : "separator"}
+        className={cn(
+          "shrink-0 bg-border",
+          orientation === "horizontal" ? "h-px w-full" : "h-full w-px",
+          className,
+        )}
+        {...ariaProps}
+        {...props}
+      />
+    );
+  },
 );
 Separator.displayName = "Separator";
 
