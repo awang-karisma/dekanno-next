@@ -28,17 +28,17 @@ export default async function AppLayout({
 
   const navItems: NavItem[] = [
     {
-      href: `/${locale}/dashboard`,
+      href: "/dashboard",
       label: tNav("dashboard"),
       icon: "layoutDashboard",
     },
     {
-      href: `/${locale}/attendance`,
+      href: "/attendance",
       label: tNav("attendance"),
       icon: "attendance",
     },
     {
-      href: `/${locale}/students`,
+      href: "/students",
       label: tNav("students"),
       icon: "students",
     },
