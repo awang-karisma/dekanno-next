@@ -1,0 +1,115 @@
+{
+  "app": {
+    "name": "Student Manager"
+  },
+  "nav": {
+    "login": "Login",
+    "dashboard": "Dashboard",
+    "attendance": "Attendance",
+    "students": "Students"
+  },
+  "common": {
+    "email": "Email",
+    "password": "Password",
+    "search": "Search",
+    "searchByNameOrId": "Search by name or student ID",
+    "rememberMe": "Remember me",
+    "forgotPassword": "Forgot password?",
+    "present": "Present",
+    "absent": "Absent",
+    "actions": {
+      "cancel": "Cancel",
+      "save": "Save",
+      "submit": "Submit"
+    }
+  },
+  "auth": {
+    "title": "Welcome back",
+    "subtitle": "Sign in to manage student attendance.",
+    "button": "Sign in",
+    "divider": "Or continue with"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "subtitle": "Overview of today's attendance.",
+    "stats": {
+      "totalStudents": "Total students",
+      "presentToday": "Present today",
+      "absentToday": "Absent today"
+    },
+    "statsHelper": {
+      "total": "Across {value}",
+      "present": "{value} vs yesterday",
+      "absent": "{value} vs yesterday"
+    },
+    "attendanceTrend": "Attendance trend",
+    "attendanceTrendDescription": "Attendance performance for this school week.",
+    "classOverview": "Attendance by class",
+    "classOverviewDescription": "Compare present students in each class.",
+    "latestAbsentees": "Latest absences",
+    "latestAbsenteesDescription": "Students marked absent during the last 24 hours.",
+    "reasons": {
+      "sick": "Sick leave",
+      "family": "Family matters",
+      "permit": "Permitted absence"
+    },
+    "updatedAt": "Updated at {value}",
+    "actions": {
+      "viewAttendance": "View attendance history"
+    }
+  },
+  "attendance": {
+    "title": "Attendance",
+    "subtitle": "Record daily attendance and track absences.",
+    "dateLabel": "Class date",
+    "searchPlaceholder": "Search by name or student ID",
+    "table": {
+      "student": "Student",
+      "status": "Status",
+      "notes": "Notes"
+    },
+    "filters": {
+      "label": "Show",
+      "all": "All students",
+      "present": "Present only",
+      "absent": "Absent only"
+    },
+    "actions": {
+      "markPresent": "Mark present",
+      "markAbsent": "Mark absent",
+      "submit": "Save attendance"
+    },
+    "feedback": {
+      "saved": "Attendance saved"
+    }
+  },
+  "students": {
+    "title": "Students",
+    "subtitle": "Browse student records and contact details.",
+    "searchPlaceholder": "Search by name, ID, or class",
+    "table": {
+      "id": "Student ID",
+      "name": "Name",
+      "class": "Class",
+      "guardian": "Guardian",
+      "contact": "Contact",
+      "attendance": "Attendance"
+    },
+    "attendanceRate": "{value}% attendance",
+    "stats": {
+      "total": "Total students",
+      "new": "New admissions",
+      "guardian": "Guardians on file"
+    }
+  },
+  "theme": {
+    "toggle": "Toggle theme",
+    "light": "Light",
+    "dark": "Dark"
+  },
+  "language": {
+    "label": "Language",
+    "english": "English",
+    "indonesian": "Indonesian"
+  }
+}

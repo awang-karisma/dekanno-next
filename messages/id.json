@@ -1,0 +1,115 @@
+{
+  "app": {
+    "name": "Manajer Siswa"
+  },
+  "nav": {
+    "login": "Masuk",
+    "dashboard": "Dasbor",
+    "attendance": "Kehadiran",
+    "students": "Siswa"
+  },
+  "common": {
+    "email": "Email",
+    "password": "Kata sandi",
+    "search": "Cari",
+    "searchByNameOrId": "Cari berdasarkan nama atau NIS",
+    "rememberMe": "Ingat saya",
+    "forgotPassword": "Lupa kata sandi?",
+    "present": "Hadir",
+    "absent": "Tidak hadir",
+    "actions": {
+      "cancel": "Batal",
+      "save": "Simpan",
+      "submit": "Kirim"
+    }
+  },
+  "auth": {
+    "title": "Selamat datang kembali",
+    "subtitle": "Masuk untuk mengelola kehadiran siswa.",
+    "button": "Masuk",
+    "divider": "Atau lanjut dengan"
+  },
+  "dashboard": {
+    "title": "Dasbor",
+    "subtitle": "Ringkasan kehadiran hari ini.",
+    "stats": {
+      "totalStudents": "Total siswa",
+      "presentToday": "Hadir hari ini",
+      "absentToday": "Tidak hadir hari ini"
+    },
+    "statsHelper": {
+      "total": "Mencakup {value}",
+      "present": "{value} dibanding kemarin",
+      "absent": "{value} dibanding kemarin"
+    },
+    "attendanceTrend": "Tren kehadiran",
+    "attendanceTrendDescription": "Performa kehadiran selama minggu sekolah ini.",
+    "classOverview": "Kehadiran per kelas",
+    "classOverviewDescription": "Bandingkan jumlah siswa hadir di tiap kelas.",
+    "latestAbsentees": "Ketidakhadiran terbaru",
+    "latestAbsenteesDescription": "Siswa yang ditandai tidak hadir dalam 24 jam terakhir.",
+    "reasons": {
+      "sick": "Izin sakit",
+      "family": "Keperluan keluarga",
+      "permit": "Izin resmi"
+    },
+    "updatedAt": "Diperbarui pukul {value}",
+    "actions": {
+      "viewAttendance": "Lihat riwayat kehadiran"
+    }
+  },
+  "attendance": {
+    "title": "Kehadiran",
+    "subtitle": "Catat kehadiran harian dan pantau absensi.",
+    "dateLabel": "Tanggal kelas",
+    "searchPlaceholder": "Cari berdasarkan nama atau NIS",
+    "table": {
+      "student": "Siswa",
+      "status": "Status",
+      "notes": "Catatan"
+    },
+    "filters": {
+      "label": "Tampilkan",
+      "all": "Semua siswa",
+      "present": "Hadir saja",
+      "absent": "Tidak hadir saja"
+    },
+    "actions": {
+      "markPresent": "Tandai hadir",
+      "markAbsent": "Tandai tidak hadir",
+      "submit": "Simpan kehadiran"
+    },
+    "feedback": {
+      "saved": "Kehadiran tersimpan"
+    }
+  },
+  "students": {
+    "title": "Siswa",
+    "subtitle": "Lihat data siswa dan kontak wali.",
+    "searchPlaceholder": "Cari siswa berdasarkan nama, NIS, atau kelas",
+    "table": {
+      "id": "NIS",
+      "name": "Nama",
+      "class": "Kelas",
+      "guardian": "Wali",
+      "contact": "Kontak",
+      "attendance": "Kehadiran"
+    },
+    "attendanceRate": "{value}% kehadiran",
+    "stats": {
+      "total": "Total siswa",
+      "new": "Siswa baru",
+      "guardian": "Data wali"
+    }
+  },
+  "theme": {
+    "toggle": "Ubah tema",
+    "light": "Terang",
+    "dark": "Gelap"
+  },
+  "language": {
+    "label": "Bahasa",
+    "english": "Inggris",
+    "indonesian": "Indonesia"
+  }
+}
