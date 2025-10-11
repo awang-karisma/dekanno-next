@@ -93,13 +93,33 @@
       "class": "Class",
       "guardian": "Guardian",
       "contact": "Contact",
-      "attendance": "Attendance"
+      "attendance": "Attendance",
+      "actions": "Actions"
     },
     "attendanceRate": "{value}% attendance",
     "stats": {
       "total": "Total students",
       "new": "New admissions",
       "guardian": "Guardians on file"
+    },
+    "actions": {
+      "add": "Add student",
+      "edit": "Edit"
+    },
+    "form": {
+      "createTitle": "Add new student",
+      "editTitle": "Edit student",
+      "description": "Fill in the student details below.",
+      "fields": {
+        "id": "Student ID",
+        "name": "Name",
+        "class": "Class",
+        "guardian": "Guardian",
+        "contact": "Contact",
+        "notes": "Notes"
+      },
+      "createButton": "Save student",
+      "editButton": "Update student"
     }
   },
   "theme": {
@@ -111,5 +131,15 @@
     "label": "Language",
     "english": "English",
     "indonesian": "Indonesian"
+  },
+  "topbar": {
+    "greeting": "Welcome back",
+    "openMenu": "Open user menu",
+    "menu": {
+      "title": "Account",
+      "profile": "Profile",
+      "settings": "Settings",
+      "logout": "Log out"
+    }
   }
 }

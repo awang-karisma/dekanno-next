@@ -93,13 +93,33 @@
       "class": "Kelas",
       "guardian": "Wali",
       "contact": "Kontak",
-      "attendance": "Kehadiran"
+      "attendance": "Kehadiran",
+      "actions": "Aksi"
     },
     "attendanceRate": "{value}% kehadiran",
     "stats": {
       "total": "Total siswa",
       "new": "Siswa baru",
       "guardian": "Data wali"
+    },
+    "actions": {
+      "add": "Tambah siswa",
+      "edit": "Ubah"
+    },
+    "form": {
+      "createTitle": "Tambah siswa baru",
+      "editTitle": "Ubah data siswa",
+      "description": "Lengkapi detail siswa di bawah ini.",
+      "fields": {
+        "id": "NIS",
+        "name": "Nama",
+        "class": "Kelas",
+        "guardian": "Wali",
+        "contact": "Kontak",
+        "notes": "Catatan"
+      },
+      "createButton": "Simpan siswa",
+      "editButton": "Perbarui siswa"
     }
   },
   "theme": {
@@ -111,5 +131,15 @@
     "label": "Bahasa",
     "english": "Inggris",
     "indonesian": "Indonesia"
+  },
+  "topbar": {
+    "greeting": "Selamat datang",
+    "openMenu": "Buka menu pengguna",
+    "menu": {
+      "title": "Akun",
+      "profile": "Profil",
+      "settings": "Pengaturan",
+      "logout": "Keluar"
+    }
   }
 }

@@ -3,6 +3,7 @@ import { getTranslations } from "next-intl/server";
 import type { ReactNode } from "react";
 
 import { AppSidebarNav, type NavItem } from "@/components/app-sidebar-nav";
+import { AppTopbar } from "@/components/app-topbar";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Separator } from "@/components/ui/separator";
@@ -77,6 +78,7 @@ export default async function AppLayout({
           className={cn("flex-1 space-y-6", "pb-10 lg:pb-16")}
           aria-live="polite"
         >
+          <AppTopbar />
           {children}
         </main>
       </div>
