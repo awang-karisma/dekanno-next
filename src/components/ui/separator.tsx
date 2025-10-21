@@ -2,15 +2,24 @@ import * as React from "react";
 
 import { cn } from "@/lib/utils";
 
-const Separator = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(
+type SeparatorOrientation = "horizontal" | "vertical";
+
+interface SeparatorProps extends React.HTMLAttributes<HTMLDivElement> {
+  orientation?: SeparatorOrientation;
+  decorative?: boolean;
+}
+
+const Separator = React.forwardRef<HTMLDivElement, SeparatorProps>(
   (
     { className, orientation = "horizontal", decorative = true, ...props },
     ref,
   ) => {
-    const ariaProps = decorative ? {} : { "aria-orientation": orientation };
+    const ariaProps = decorative
+      ? {}
+      : ({ "aria-orientation": orientation } satisfies Pick<
+          React.AriaAttributes,
+          "aria-orientation"
+        >);
 
     return (
       <div

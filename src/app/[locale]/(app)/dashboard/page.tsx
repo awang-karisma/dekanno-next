@@ -37,9 +37,14 @@ const LATEST_ABSENTEES = [
   { name: "Samuel Prakoso", className: "Grade 9A", reasonKey: "permit" },
 ];
 
-export default async function DashboardPage() {
-  const tDashboard = await getTranslations({ namespace: "dashboard" });
-  const tCommon = await getTranslations({ namespace: "common" });
+export default async function DashboardPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const tDashboard = await getTranslations({ namespace: "dashboard", locale });
+  const tCommon = await getTranslations({ namespace: "common", locale });
 
   const stats = [
     {
