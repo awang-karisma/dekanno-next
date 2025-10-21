@@ -1,0 +1,214 @@
+{
+  "app": {
+    "name": "Student Manager"
+  },
+  "nav": {
+    "login": "Login",
+    "dashboard": "Dashboard",
+    "attendance": "Attendance",
+    "students": "Students",
+    "grades": "Grades",
+    "courses": "Courses"
+  },
+  "common": {
+    "email": "Email",
+    "password": "Password",
+    "search": "Search",
+    "searchByNameOrId": "Search by name or student ID",
+    "rememberMe": "Remember me",
+    "forgotPassword": "Forgot password?",
+    "present": "Present",
+    "absent": "Absent",
+    "actions": {
+      "cancel": "Cancel",
+      "save": "Save",
+      "submit": "Submit"
+    },
+    "pagination": {
+      "summary": "Showing {start}-{end} of {total}",
+      "previous": "Previous",
+      "next": "Next"
+    }
+  },
+  "auth": {
+    "title": "Welcome back",
+    "subtitle": "Sign in to manage student attendance.",
+    "button": "Sign in",
+    "divider": "Or continue with"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "subtitle": "Overview of today's attendance.",
+    "stats": {
+      "totalStudents": "Total students",
+      "presentToday": "Present today",
+      "absentToday": "Absent today"
+    },
+    "statsHelper": {
+      "total": "Across {value}",
+      "present": "{value} vs yesterday",
+      "absent": "{value} vs yesterday"
+    },
+    "attendanceTrend": "Attendance trend",
+    "attendanceTrendDescription": "Attendance performance for this school week.",
+    "classOverview": "Attendance by class",
+    "classOverviewDescription": "Compare present students in each class.",
+    "latestAbsentees": "Latest absences",
+    "latestAbsenteesDescription": "Students marked absent during the last 24 hours.",
+    "reasons": {
+      "sick": "Sick leave",
+      "family": "Family matters",
+      "permit": "Permitted absence"
+    },
+    "updatedAt": "Updated at {value}",
+    "actions": {
+      "viewAttendance": "View attendance history"
+    }
+  },
+  "attendance": {
+    "title": "Attendance",
+    "subtitle": "Record daily attendance and track absences.",
+    "dateLabel": "Class date",
+    "searchPlaceholder": "Search by name or student ID",
+    "table": {
+      "student": "Student",
+      "status": "Status",
+      "notes": "Notes",
+      "actions": "Action"
+    },
+    "filters": {
+      "label": "Show",
+      "all": "All students",
+      "present": "Present only",
+      "absent": "Absent only"
+    },
+    "actions": {
+      "markPresent": "Mark present",
+      "markAbsent": "Mark absent",
+      "markSick": "Mark sick",
+      "markLeave": "Mark permitted absence",
+      "submit": "Save attendance"
+    },
+    "statuses": {
+      "sick": "Sick",
+      "leave": "On leave"
+    },
+    "leaveDialog": {
+      "title": "Permitted absence",
+      "description": "Optionally add a note before marking this student as on leave.",
+      "reasonLabel": "Reason (optional)",
+      "reasonPlaceholder": "e.g. Family trip",
+      "confirm": "OK"
+    },
+    "feedback": {
+      "saved": "Attendance saved"
+    }
+  },
+  "students": {
+    "title": "Students",
+    "subtitle": "Browse student records and contact details.",
+    "searchPlaceholder": "Search by name, ID, grade, or class",
+    "table": {
+      "id": "Student ID",
+      "name": "Name",
+      "class": "Class",
+      "grade": "Grade",
+      "guardian": "Guardian",
+      "contact": "Contact",
+      "attendance": "Attendance",
+      "actions": "Actions"
+    },
+    "attendanceRate": "{value}% attendance",
+    "stats": {
+      "total": "Total students",
+      "new": "New admissions",
+      "guardian": "Guardians on file"
+    },
+    "actions": {
+      "add": "Add student",
+      "edit": "Edit"
+    },
+    "form": {
+      "createTitle": "Add new student",
+      "editTitle": "Edit student",
+      "description": "Fill in the student details below.",
+      "fields": {
+        "id": "Student ID",
+        "name": "Name",
+        "class": "Class",
+        "grade": "Grade",
+        "guardian": "Guardian",
+        "contact": "Contact",
+        "notes": "Notes"
+      },
+      "createButton": "Save student",
+      "editButton": "Update student"
+    }
+  },
+  "grades": {
+    "title": "Grades",
+    "subtitle": "Review grade levels and manage student assignments.",
+    "table": {
+      "name": "Grade name",
+      "students": "Student count",
+      "actions": "Actions"
+    },
+    "actions": {
+      "add": "Add grade",
+      "addStudent": "Add student",
+      "edit": "Edit grade",
+      "delete": "Delete grade",
+      "more": "More options"
+    },
+    "form": {
+      "createTitle": "Add new grade",
+      "editTitle": "Edit grade",
+      "description": "Provide the grade details below.",
+      "fields": {
+        "id": "Grade ID",
+        "name": "Grade name"
+      },
+      "createButton": "Save grade",
+      "editButton": "Update grade"
+    }
+  },
+  "courses": {
+    "title": "Courses",
+    "subtitle": "Manage course offerings and see which grades they belong to.",
+    "table": {
+      "name": "Course name",
+      "grades": "Grades",
+      "students": "Student count",
+      "actions": "Actions"
+    },
+    "actions": {
+      "addStudent": "Add student",
+      "edit": "Edit course",
+      "delete": "Delete course",
+      "more": "More options"
+    }
+  },
+  "theme": {
+    "toggle": "Toggle theme",
+    "light": "Light",
+    "dark": "Dark"
+  },
+  "language": {
+    "label": "Language",
+    "english": "English",
+    "indonesian": "Indonesian"
+  },
+  "topbar": {
+    "greeting": "Welcome back",
+    "openNavigation": "Open navigation",
+    "closeNavigation": "Close navigation",
+    "openMenu": "Open user menu",
+    "navigation": "Navigation",
+    "menu": {
+      "title": "Account",
+      "profile": "Profile",
+      "settings": "Settings",
+      "logout": "Log out"
+    }
+  }
+}

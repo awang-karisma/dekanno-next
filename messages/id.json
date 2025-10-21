@@ -1,0 +1,214 @@
+{
+  "app": {
+    "name": "Manajer Siswa"
+  },
+  "nav": {
+    "login": "Masuk",
+    "dashboard": "Dasbor",
+    "attendance": "Kehadiran",
+    "students": "Siswa",
+    "grades": "Kelas",
+    "courses": "Mata pelajaran"
+  },
+  "common": {
+    "email": "Email",
+    "password": "Kata sandi",
+    "search": "Cari",
+    "searchByNameOrId": "Cari berdasarkan nama atau NIS",
+    "rememberMe": "Ingat saya",
+    "forgotPassword": "Lupa kata sandi?",
+    "present": "Hadir",
+    "absent": "Tidak hadir",
+    "actions": {
+      "cancel": "Batal",
+      "save": "Simpan",
+      "submit": "Kirim"
+    },
+    "pagination": {
+      "summary": "Menampilkan {start}-{end} dari {total}",
+      "previous": "Sebelumnya",
+      "next": "Berikutnya"
+    }
+  },
+  "auth": {
+    "title": "Selamat datang kembali",
+    "subtitle": "Masuk untuk mengelola kehadiran siswa.",
+    "button": "Masuk",
+    "divider": "Atau lanjut dengan"
+  },
+  "dashboard": {
+    "title": "Dasbor",
+    "subtitle": "Ringkasan kehadiran hari ini.",
+    "stats": {
+      "totalStudents": "Total siswa",
+      "presentToday": "Hadir hari ini",
+      "absentToday": "Tidak hadir hari ini"
+    },
+    "statsHelper": {
+      "total": "Mencakup {value}",
+      "present": "{value} dibanding kemarin",
+      "absent": "{value} dibanding kemarin"
+    },
+    "attendanceTrend": "Tren kehadiran",
+    "attendanceTrendDescription": "Performa kehadiran selama minggu sekolah ini.",
+    "classOverview": "Kehadiran per kelas",
+    "classOverviewDescription": "Bandingkan jumlah siswa hadir di tiap kelas.",
+    "latestAbsentees": "Ketidakhadiran terbaru",
+    "latestAbsenteesDescription": "Siswa yang ditandai tidak hadir dalam 24 jam terakhir.",
+    "reasons": {
+      "sick": "Izin sakit",
+      "family": "Keperluan keluarga",
+      "permit": "Izin resmi"
+    },
+    "updatedAt": "Diperbarui pukul {value}",
+    "actions": {
+      "viewAttendance": "Lihat riwayat kehadiran"
+    }
+  },
+  "attendance": {
+    "title": "Kehadiran",
+    "subtitle": "Catat kehadiran harian dan pantau absensi.",
+    "dateLabel": "Tanggal kelas",
+    "searchPlaceholder": "Cari berdasarkan nama atau NIS",
+    "table": {
+      "student": "Siswa",
+      "status": "Status",
+      "notes": "Catatan",
+      "actions": "Aksi"
+    },
+    "filters": {
+      "label": "Tampilkan",
+      "all": "Semua siswa",
+      "present": "Hadir saja",
+      "absent": "Tidak hadir saja"
+    },
+    "actions": {
+      "markPresent": "Tandai hadir",
+      "markAbsent": "Tandai tidak hadir",
+      "markSick": "Tandai sakit",
+      "markLeave": "Tandai izin",
+      "submit": "Simpan kehadiran"
+    },
+    "statuses": {
+      "sick": "Sakit",
+      "leave": "Izin"
+    },
+    "leaveDialog": {
+      "title": "Izin",
+      "description": "Opsional tambahkan catatan sebelum menandai siswa izin.",
+      "reasonLabel": "Alasan (opsional)",
+      "reasonPlaceholder": "mis. Perjalanan keluarga",
+      "confirm": "Oke"
+    },
+    "feedback": {
+      "saved": "Kehadiran tersimpan"
+    }
+  },
+  "students": {
+    "title": "Siswa",
+    "subtitle": "Lihat data siswa dan kontak wali.",
+    "searchPlaceholder": "Cari siswa berdasarkan nama, NIS, tingkat, atau kelas",
+    "table": {
+      "id": "NIS",
+      "name": "Nama",
+      "class": "Kelas",
+      "grade": "Tingkat",
+      "guardian": "Wali",
+      "contact": "Kontak",
+      "attendance": "Kehadiran",
+      "actions": "Aksi"
+    },
+    "attendanceRate": "{value}% kehadiran",
+    "stats": {
+      "total": "Total siswa",
+      "new": "Siswa baru",
+      "guardian": "Data wali"
+    },
+    "actions": {
+      "add": "Tambah siswa",
+      "edit": "Ubah"
+    },
+    "form": {
+      "createTitle": "Tambah siswa baru",
+      "editTitle": "Ubah data siswa",
+      "description": "Lengkapi detail siswa di bawah ini.",
+      "fields": {
+        "id": "NIS",
+        "name": "Nama",
+        "class": "Kelas",
+        "grade": "Tingkat",
+        "guardian": "Wali",
+        "contact": "Kontak",
+        "notes": "Catatan"
+      },
+      "createButton": "Simpan siswa",
+      "editButton": "Perbarui siswa"
+    }
+  },
+  "grades": {
+    "title": "Kelas",
+    "subtitle": "Kelola tingkat kelas dan penugasan siswa.",
+    "table": {
+      "name": "Nama kelas",
+      "students": "Jumlah siswa",
+      "actions": "Aksi"
+    },
+    "actions": {
+      "add": "Tambah kelas",
+      "addStudent": "Tambah siswa",
+      "edit": "Ubah kelas",
+      "delete": "Hapus kelas",
+      "more": "Opsi lainnya"
+    },
+    "form": {
+      "createTitle": "Tambah kelas baru",
+      "editTitle": "Ubah data kelas",
+      "description": "Lengkapi detail kelas di bawah ini.",
+      "fields": {
+        "id": "ID kelas",
+        "name": "Nama kelas"
+      },
+      "createButton": "Simpan kelas",
+      "editButton": "Perbarui kelas"
+    }
+  },
+  "courses": {
+    "title": "Mata pelajaran",
+    "subtitle": "Kelola mata pelajaran dan keterkaitannya dengan kelas.",
+    "table": {
+      "name": "Nama pelajaran",
+      "grades": "Kelas",
+      "students": "Jumlah siswa",
+      "actions": "Aksi"
+    },
+    "actions": {
+      "addStudent": "Tambah siswa",
+      "edit": "Ubah pelajaran",
+      "delete": "Hapus pelajaran",
+      "more": "Opsi lainnya"
+    }
+  },
+  "theme": {
+    "toggle": "Ubah tema",
+    "light": "Terang",
+    "dark": "Gelap"
+  },
+  "language": {
+    "label": "Bahasa",
+    "english": "Inggris",
+    "indonesian": "Indonesia"
+  },
+  "topbar": {
+    "greeting": "Selamat datang",
+    "openNavigation": "Buka navigasi",
+    "closeNavigation": "Tutup navigasi",
+    "openMenu": "Buka menu pengguna",
+    "navigation": "Navigasi",
+    "menu": {
+      "title": "Akun",
+      "profile": "Profil",
+      "settings": "Pengaturan",
+      "logout": "Keluar"
+    }
+  }
+}
