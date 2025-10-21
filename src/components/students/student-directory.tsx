@@ -1,9 +1,10 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -15,83 +16,56 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { TablePagination } from "@/components/ui/table-pagination";
+import { GRADES } from "@/data/grades";
+import { STUDENTS } from "@/data/students";
+import { Link } from "@/i18n/navigation";
 
-interface StudentRecord {
-  id: string;
-  name: string;
-  className: string;
-  guardian: string;
-  contact: string;
-  attendance: number;
-}
-
-const STUDENTS: StudentRecord[] = [
-  {
-    id: "ST-101",
-    name: "Siti Rahma",
-    className: "Grade 7A",
-    guardian: "Nurhayati",
-    contact: "0812-2345-6789",
-    attendance: 96,
-  },
-  {
-    id: "ST-102",
-    name: "Andi Wijaya",
-    className: "Grade 7A",
-    guardian: "Slamet Wijaya",
-    contact: "0813-9876-5432",
-    attendance: 92,
-  },
-  {
-    id: "ST-215",
-    name: "Felicia Tan",
-    className: "Grade 8B",
-    guardian: "Maria Tan",
-    contact: "0814-7755-2266",
-    attendance: 88,
-  },
-  {
-    id: "ST-310",
-    name: "Budi Santoso",
-    className: "Grade 9A",
-    guardian: "Siti Aisyah",
-    contact: "0815-6677-7890",
-    attendance: 98,
-  },
-  {
-    id: "ST-155",
-    name: "Rina Moe",
-    className: "Grade 8A",
-    guardian: "Liang Moe",
-    contact: "0812-7788-3344",
-    attendance: 93,
-  },
-  {
-    id: "ST-220",
-    name: "Samuel Prakoso",
-    className: "Grade 9A",
-    guardian: "Yohana Prakoso",
-    contact: "0813-2233-4455",
-    attendance: 85,
-  },
-];
+const PAGE_SIZE = 5;
 
 export function StudentDirectory() {
   const tStudents = useTranslations("students");
   const [searchTerm, setSearchTerm] = useState("");
+  const [page, setPage] = useState(1);
+
+  const studentsWithGrade = useMemo(() => {
+    const gradeLookup = new Map(
+      GRADES.map((grade) => [grade.id, grade.name] as const),
+    );
+
+    return STUDENTS.map((student) => ({
+      ...student,
+      gradeName: gradeLookup.get(student.gradeId) ?? student.gradeId,
+    }));
+  }, []);
 
   const filteredStudents = useMemo(() => {
     if (!searchTerm) {
-      return STUDENTS;
+      return studentsWithGrade;
     }
 
     const term = searchTerm.toLowerCase();
-    return STUDENTS.filter((student) =>
-      [student.name, student.id, student.className].some((value) =>
+    return studentsWithGrade.filter((student) =>
+      [student.name, student.id, student.gradeName].some((value) =>
         value.toLowerCase().includes(term),
       ),
     );
-  }, [searchTerm]);
+  }, [searchTerm, studentsWithGrade]);
+
+  useEffect(() => {
+    const totalPages = Math.max(
+      1,
+      Math.ceil(filteredStudents.length / PAGE_SIZE),
+    );
+    if (page > totalPages) {
+      setPage(totalPages);
+    }
+  }, [filteredStudents.length, page]);
+
+  const paginatedStudents = useMemo(() => {
+    const startIndex = (page - 1) * PAGE_SIZE;
+    return filteredStudents.slice(startIndex, startIndex + PAGE_SIZE);
+  }, [filteredStudents, page]);
 
   return (
     <Card>
@@ -104,7 +78,10 @@ export function StudentDirectory() {
             id="student-search"
             placeholder={tStudents("searchPlaceholder")}
             value={searchTerm}
-            onChange={(event) => setSearchTerm(event.target.value)}
+            onChange={(event) => {
+              setSearchTerm(event.target.value);
+              setPage(1);
+            }}
           />
         </div>
 
@@ -114,16 +91,19 @@ export function StudentDirectory() {
               <TableRow>
                 <TableHead>{tStudents("table.id")}</TableHead>
                 <TableHead>{tStudents("table.name")}</TableHead>
-                <TableHead>{tStudents("table.class")}</TableHead>
+                <TableHead>{tStudents("table.grade")}</TableHead>
                 <TableHead>{tStudents("table.guardian")}</TableHead>
                 <TableHead>{tStudents("table.contact")}</TableHead>
                 <TableHead className="text-right">
                   {tStudents("table.attendance")}
                 </TableHead>
+                <TableHead className="hidden text-right lg:table-cell">
+                  {tStudents("table.actions")}
+                </TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
-              {filteredStudents.map((student) => (
+              {paginatedStudents.map((student) => (
                 <TableRow key={student.id}>
                   <TableCell className="font-medium">{student.id}</TableCell>
                   <TableCell>
@@ -131,16 +111,28 @@ export function StudentDirectory() {
                       {student.name}
                     </div>
                     <div className="mt-1 text-xs text-muted-foreground lg:hidden">
-                      {student.className} - {student.guardian}
+                      {student.gradeName}
+                    </div>
+                    <div className="mt-1 text-xs text-muted-foreground lg:hidden">
+                      {student.guardian}
                     </div>
                   </TableCell>
                   <TableCell className="hidden lg:table-cell">
-                    {student.className}
+                    <Badge variant="secondary">{student.gradeName}</Badge>
                   </TableCell>
                   <TableCell className="hidden lg:table-cell">
                     {student.guardian}
                   </TableCell>
-                  <TableCell>{student.contact}</TableCell>
+                  <TableCell>
+                    <div>{student.contact}</div>
+                    <div className="mt-3 flex justify-start lg:hidden">
+                      <Button asChild size="sm" variant="outline">
+                        <Link href={`/students/${student.id}/edit`}>
+                          {tStudents("actions.edit")}
+                        </Link>
+                      </Button>
+                    </div>
+                  </TableCell>
                   <TableCell className="text-right">
                     <Badge variant="outline">
                       {tStudents("attendanceRate", {
@@ -148,11 +140,24 @@ export function StudentDirectory() {
                       })}
                     </Badge>
                   </TableCell>
+                  <TableCell className="hidden text-right lg:table-cell">
+                    <Button asChild size="sm" variant="outline">
+                      <Link href={`/students/${student.id}/edit`}>
+                        {tStudents("actions.edit")}
+                      </Link>
+                    </Button>
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>
           </Table>
         </div>
+        <TablePagination
+          totalItems={filteredStudents.length}
+          pageSize={PAGE_SIZE}
+          currentPage={page}
+          onPageChange={setPage}
+        />
       </CardContent>
     </Card>
   );

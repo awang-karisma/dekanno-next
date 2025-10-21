@@ -1,6 +1,12 @@
 "use client";
 
-import { BookOpenCheck, LayoutDashboard, Users } from "lucide-react";
+import {
+  BookOpenCheck,
+  GraduationCap,
+  LayoutDashboard,
+  Notebook,
+  Users,
+} from "lucide-react";
 import type { ComponentType } from "react";
 
 import { Link, usePathname } from "@/i18n/navigation";
@@ -10,6 +16,8 @@ const iconMap = {
   layoutDashboard: LayoutDashboard,
   attendance: BookOpenCheck,
   students: Users,
+  grades: GraduationCap,
+  courses: Notebook,
 } satisfies Record<string, ComponentType<{ className?: string }>>;
 
 export type NavIcon = keyof typeof iconMap;
