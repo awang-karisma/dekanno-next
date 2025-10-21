@@ -8,7 +8,7 @@ export default async function EditStudentPage({
 }: {
   params: Promise<{ locale: string; studentId: string }>;
 }) {
-  const { locale, studentId } = await params;
+  const { studentId } = await params;
   const student = findStudentById(studentId);
 
   if (!student) {
@@ -17,12 +17,12 @@ export default async function EditStudentPage({
 
   return (
     <StudentForm
-      locale={locale}
       mode="edit"
       initialValues={{
         id: student.id,
         name: student.name,
-        grade: student.gradeId,
+        classId: student.classId,
+        gradeId: student.gradeId,
         guardian: student.guardian,
         contact: student.contact,
         notes: student.notes,

@@ -1,4 +1,7 @@
-import { getTranslations } from "next-intl/server";
+"use client";
+
+import { useTranslations } from "next-intl";
+import { useEffect, useMemo, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -11,30 +14,87 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { CLASSES } from "@/data/classes";
+import { GRADES } from "@/data/grades";
 import { Link } from "@/i18n/navigation";
 
 export interface StudentFormValues {
   id?: string;
   name?: string;
-  grade?: string;
+  classId?: string;
+  gradeId?: string;
   guardian?: string;
   contact?: string;
   notes?: string;
 }
 
 interface StudentFormProps {
-  locale: string;
   mode: "create" | "edit";
   initialValues?: StudentFormValues;
 }
 
-export async function StudentForm({
-  locale,
-  mode,
-  initialValues,
-}: StudentFormProps) {
-  const tStudents = await getTranslations({ namespace: "students", locale });
-  const tCommon = await getTranslations({ namespace: "common", locale });
+export function StudentForm({ mode, initialValues }: StudentFormProps) {
+  const tStudents = useTranslations("students");
+  const tCommon = useTranslations("common");
+
+  const [classValue, setClassValue] = useState(() => {
+    const classId = initialValues?.classId;
+    if (!classId) {
+      return "";
+    }
+    const matchedClass = CLASSES.find((classItem) => classItem.id === classId);
+    return matchedClass?.name ?? classId;
+  });
+
+  const [gradeValue, setGradeValue] = useState(() => {
+    const gradeId = initialValues?.gradeId;
+    if (!gradeId) {
+      return "";
+    }
+    const matchedGrade = GRADES.find((grade) => grade.id === gradeId);
+    return matchedGrade?.name ?? gradeId;
+  });
+
+  const matchedClass = useMemo(() => {
+    const normalized = classValue.trim().toLowerCase();
+    if (!normalized) {
+      return null;
+    }
+
+    return (
+      CLASSES.find(
+        (classItem) =>
+          classItem.id.toLowerCase() === normalized ||
+          classItem.name.toLowerCase() === normalized,
+      ) ?? null
+    );
+  }, [classValue]);
+
+  const gradeSuggestions = useMemo(() => {
+    if (!matchedClass) {
+      return GRADES;
+    }
+
+    const allowed = new Set(matchedClass.gradeIds);
+    return GRADES.filter((grade) => allowed.has(grade.id));
+  }, [matchedClass]);
+
+  useEffect(() => {
+    if (!matchedClass || !gradeValue) {
+      return;
+    }
+
+    const normalized = gradeValue.trim().toLowerCase();
+    const isValid = gradeSuggestions.some(
+      (grade) =>
+        grade.id.toLowerCase() === normalized ||
+        grade.name.toLowerCase() === normalized,
+    );
+
+    if (!isValid) {
+      setGradeValue("");
+    }
+  }, [gradeSuggestions, gradeValue, matchedClass]);
 
   const titleKey = mode === "create" ? "createTitle" : "editTitle";
   const buttonKey = mode === "create" ? "createButton" : "editButton";
@@ -83,6 +143,26 @@ export async function StudentForm({
               />
             </div>
             <div className="space-y-2">
+              <Label htmlFor="student-class">
+                {tStudents("form.fields.class")}
+              </Label>
+              <Input
+                id="student-class"
+                name="student-class"
+                list="student-class-options"
+                autoComplete="off"
+                value={classValue}
+                onChange={(event) => setClassValue(event.target.value)}
+              />
+              <datalist id="student-class-options">
+                {CLASSES.map((classItem) => (
+                  <option key={classItem.id} value={classItem.name}>
+                    {classItem.name}
+                  </option>
+                ))}
+              </datalist>
+            </div>
+            <div className="space-y-2">
               <Label htmlFor="student-grade">
                 {tStudents("form.fields.grade")}
               </Label>
@@ -90,8 +170,21 @@ export async function StudentForm({
                 id="student-grade"
                 name="student-grade"
                 autoComplete="off"
-                defaultValue={initialValues?.grade ?? ""}
+                list="student-grade-options"
+                value={gradeValue}
+                onChange={(event) => setGradeValue(event.target.value)}
               />
+              <datalist id="student-grade-options">
+                {gradeSuggestions.map((grade) => (
+                  <option
+                    key={grade.id}
+                    value={grade.name}
+                    label={`${grade.name} (${grade.id})`}
+                  >
+                    {grade.id}
+                  </option>
+                ))}
+              </datalist>
             </div>
             <div className="space-y-2">
               <Label htmlFor="student-guardian">

@@ -17,6 +17,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { TablePagination } from "@/components/ui/table-pagination";
+import { CLASSES } from "@/data/classes";
 import { GRADES } from "@/data/grades";
 import { STUDENTS } from "@/data/students";
 import { Link } from "@/i18n/navigation";
@@ -32,10 +33,14 @@ export function StudentDirectory() {
     const gradeLookup = new Map(
       GRADES.map((grade) => [grade.id, grade.name] as const),
     );
+    const classLookup = new Map(
+      CLASSES.map((classItem) => [classItem.id, classItem.name] as const),
+    );
 
     return STUDENTS.map((student) => ({
       ...student,
       gradeName: gradeLookup.get(student.gradeId) ?? student.gradeId,
+      className: classLookup.get(student.classId) ?? student.classId,
     }));
   }, []);
 
@@ -46,8 +51,8 @@ export function StudentDirectory() {
 
     const term = searchTerm.toLowerCase();
     return studentsWithGrade.filter((student) =>
-      [student.name, student.id, student.gradeName].some((value) =>
-        value.toLowerCase().includes(term),
+      [student.name, student.id, student.gradeName, student.className].some(
+        (value) => value.toLowerCase().includes(term),
       ),
     );
   }, [searchTerm, studentsWithGrade]);
@@ -92,6 +97,9 @@ export function StudentDirectory() {
                 <TableHead>{tStudents("table.id")}</TableHead>
                 <TableHead>{tStudents("table.name")}</TableHead>
                 <TableHead>{tStudents("table.grade")}</TableHead>
+                <TableHead className="hidden lg:table-cell">
+                  {tStudents("table.class")}
+                </TableHead>
                 <TableHead>{tStudents("table.guardian")}</TableHead>
                 <TableHead>{tStudents("table.contact")}</TableHead>
                 <TableHead className="text-right">
@@ -114,11 +122,17 @@ export function StudentDirectory() {
                       {student.gradeName}
                     </div>
                     <div className="mt-1 text-xs text-muted-foreground lg:hidden">
+                      {student.className}
+                    </div>
+                    <div className="mt-1 text-xs text-muted-foreground lg:hidden">
                       {student.guardian}
                     </div>
                   </TableCell>
                   <TableCell className="hidden lg:table-cell">
                     <Badge variant="secondary">{student.gradeName}</Badge>
+                  </TableCell>
+                  <TableCell className="hidden lg:table-cell">
+                    <Badge variant="outline">{student.className}</Badge>
                   </TableCell>
                   <TableCell className="hidden lg:table-cell">
                     {student.guardian}

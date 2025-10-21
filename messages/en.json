@@ -107,7 +107,7 @@
   "students": {
     "title": "Students",
     "subtitle": "Browse student records and contact details.",
-    "searchPlaceholder": "Search by name, ID, or grade",
+    "searchPlaceholder": "Search by name, ID, grade, or class",
     "table": {
       "id": "Student ID",
       "name": "Name",
@@ -135,6 +135,7 @@
       "fields": {
         "id": "Student ID",
         "name": "Name",
+        "class": "Class",
         "grade": "Grade",
         "guardian": "Guardian",
         "contact": "Contact",

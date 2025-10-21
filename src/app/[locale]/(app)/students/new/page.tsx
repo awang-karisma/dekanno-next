@@ -5,6 +5,6 @@ export default async function CreateStudentPage({
 }: {
   params: Promise<{ locale: string }>;
 }) {
-  const { locale } = await params;
-  return <StudentForm locale={locale} mode="create" />;
+  await params;
+  return <StudentForm mode="create" />;
 }
